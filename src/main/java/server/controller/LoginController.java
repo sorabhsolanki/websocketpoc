@@ -19,8 +19,10 @@ public class LoginController extends HttpServlet{
     String userName = request.getParameter("usrName");
     System.out.println("User : " + userName);
 
-    if(!isValidUserName(userName))
+    if(!isValidUserName(userName)) {
       request.getRequestDispatcher("/errorPage.html").forward(request, response);
+      return;
+    }
 
     Cookie cookie = new Cookie("name", userName);
     response.addCookie(cookie);
