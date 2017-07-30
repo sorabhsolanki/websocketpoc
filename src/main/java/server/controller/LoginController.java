@@ -42,7 +42,8 @@ public class LoginController extends HttpServlet{
     Diwakar("diwakar"),
     Sorabh("sorabh"),
     Rachit("rachit"),
-    Akhilesh("akhilesh");
+    Akhilesh("akhilesh"),
+    Parul("parul");
 
     private String name;
 
