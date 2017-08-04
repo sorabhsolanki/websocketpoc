@@ -21,7 +21,7 @@ public class WsServer {
 
   @OnOpen
   public void onOpen(Session session){
-    System.out.println("Connection opened.");
+    System.out.println("Conn opened.");
 
     List<String> completeString = (List<String>) session.getUserProperties().get("cookie");
     String name = completeString.get(0).substring(completeString.get(0).indexOf("=") + 1);
@@ -30,7 +30,7 @@ public class WsServer {
 
   @OnClose
   public void onClose(Session session){
-    System.out.println("Connection closed.");
+    System.out.println("Conn closed.");
     sessionStringMap.remove(session);
   }
 

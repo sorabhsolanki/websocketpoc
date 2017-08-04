@@ -20,4 +20,27 @@
 		<url-pattern>/login/*</url-pattern>
 	</servlet-mapping>
 
+
+	<servlet>
+		<servlet-name>menuServlet</servlet-name>
+		<servlet-class>server.controller.MenuController</servlet-class>
+	</servlet>
+
+
+	<servlet-mapping>
+		<servlet-name>menuServlet</servlet-name>
+		<url-pattern>/menu/*</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>tournamentServlet</servlet-name>
+		<servlet-class>server.controller.TournamentController</servlet-class>
+	</servlet>
+
+
+	<servlet-mapping>
+		<servlet-name>tournamentServlet</servlet-name>
+		<url-pattern>/tournament/*</url-pattern>
+	</servlet-mapping>
+
 </web-app>

@@ -27,7 +27,7 @@ public class LoginController extends HttpServlet{
     Cookie cookie = new Cookie("name", userName);
     response.addCookie(cookie);
 
-    request.getRequestDispatcher("/chat.html").forward(request, response);
+    request.getRequestDispatcher("/menu.html").forward(request, response);
   }
 
 
