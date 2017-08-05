@@ -7,6 +7,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import server.connection.ConnectionManager;
 import server.dto.Tournament;
 import server.repository.TournamentRepository;
 import server.service.TournamentService;
@@ -16,7 +17,9 @@ import server.service.TournamentService;
 public class TournamentController extends HttpServlet {
 
 
-  private TournamentService tournamentService = new TournamentService(new TournamentRepository());
+  private final ConnectionManager connectionManager = ConnectionManager.getInstance(20);
+  private TournamentService tournamentService = new TournamentService(new TournamentRepository(
+      connectionManager));
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -58,7 +61,7 @@ public class TournamentController extends HttpServlet {
   private void saveTournament(String nameOfAdmin, String nameOfTournament,
       String[] invitees) {
     Tournament tournament = new Tournament(nameOfTournament, nameOfAdmin, true);
-    tournamentService.saveTournament(tournament);
+    tournamentService.saveTournament(tournament, invitees);
   }
 
 

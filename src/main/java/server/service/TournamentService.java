@@ -14,7 +14,7 @@ public class TournamentService {
   }
 
 
-  public void saveTournament(Tournament tournament){
-    tournamentRepository.persist(tournament);
+  public void saveTournament(Tournament tournament, String[] invitees){
+    tournamentRepository.persist(tournament, invitees);
   }
 }

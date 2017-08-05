@@ -42,7 +42,7 @@ public class ConnectionManager {
       Class.forName("com.mysql.jdbc.Driver");
 
       for(int i = 0; i < SIZE; i++)
-        conns[i] = new Conn(DriverManager.getConnection("jdbc:mysql://localhost:3306/score_nation",
+        conns[i] = new Conn(DriverManager.getConnection("jdbc:mysql://localhost:3306/chatroom",
             "scoreit", "scoreit"), i, true);
     } catch (ClassNotFoundException e) {
       System.out.println(e.getMessage());
@@ -97,7 +97,7 @@ public class ConnectionManager {
     }
   }
 
-  public static void main(String[] args) {
+  /*public static void main(String[] args) {
 
     ConnectionManager connectionManager = ConnectionManager.getInstance(12);
 
@@ -110,6 +110,6 @@ public class ConnectionManager {
 
     for(int i = 0 ; i < 12; i++)
       connectionManager.closeConnection(conns[i]);
-  }
+  }*/
 
 }
