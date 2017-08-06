@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.StringTokenizer;
 import java.util.concurrent.ConcurrentHashMap;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -24,7 +25,10 @@ public class WsServer {
     System.out.println("Conn opened.");
 
     List<String> completeString = (List<String>) session.getUserProperties().get("cookie");
-    String name = completeString.get(0).substring(completeString.get(0).indexOf("=") + 1);
+    String cookie = completeString.get(0).substring(completeString.get(0).indexOf("=") + 1);
+    StringTokenizer tokenizer = new StringTokenizer(cookie, ";");
+
+    String name = tokenizer.nextToken();
     sessionStringMap.put(session, name);
   }
 

@@ -17,9 +17,7 @@ import server.service.TournamentService;
 public class TournamentController extends HttpServlet {
 
 
-  private final ConnectionManager connectionManager = ConnectionManager.getInstance(20);
-  private TournamentService tournamentService = new TournamentService(new TournamentRepository(
-      connectionManager));
+  private TournamentService tournamentService = TournamentService.getInstance();
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -29,11 +27,12 @@ public class TournamentController extends HttpServlet {
     String invitedUsers = request.getParameter("invite");
 
     StringTokenizer stringTokenizer = new StringTokenizer(invitedUsers, ",");
-    String[] invitees = new String[stringTokenizer.countTokens()];
+    String[] invitees = new String[stringTokenizer.countTokens() + 1]; // as admin will also be the invitee
     int count = 0;
     while (stringTokenizer.hasMoreTokens()) {
-      if (isValidUserName(stringTokenizer.nextToken().trim())) {
-        invitees[count++] = stringTokenizer.nextToken().trim();
+      String name = stringTokenizer.nextToken().trim();
+      if (isValidUserName(name)) {
+        invitees[count++] = name;
       }
       else{
         request.getRequestDispatcher("/errorPage.html").forward(request, response);
@@ -49,6 +48,8 @@ public class TournamentController extends HttpServlet {
         nameOfAdmin = cookie.getValue();
       }
     }
+
+    invitees[count] = nameOfAdmin;
 
     saveTournament(nameOfAdmin, nameOfTournament, invitees);
 

@@ -21,6 +21,9 @@ public class Tournament {
     this.createdAt = new Date();
   }
 
+  public Tournament() {
+  }
+
   public String getId() {
     return id;
   }

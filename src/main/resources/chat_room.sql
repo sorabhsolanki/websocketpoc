@@ -26,7 +26,7 @@ insert into user(user_name, country_code, phone, is_active) VALUES ('diwakar' , 
 
 create table `user_tournament` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `user_id` varchar(10) NOT NULL,
+  `user_id` int(10) unsigned NOT NULL,
   `tournament_id` varchar(40) NOT NULL,
   PRIMARY KEY(`id`),
   CONSTRAINT `FK_user_id_to_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,

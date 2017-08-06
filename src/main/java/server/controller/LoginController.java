@@ -1,16 +1,29 @@
 package server.controller;
 
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import server.connection.ConnectionManager;
+import server.dto.Tournament;
+import server.repository.TournamentRepository;
+import server.service.TournamentService;
 
 /**
  */
 public class LoginController extends HttpServlet{
 
+  private static final ConnectionManager connectionManager = ConnectionManager.getInstance(20);
+  private static TournamentService tournamentService;
+
+  @Override
+  public void init(){
+    TournamentService.init(new TournamentRepository(connectionManager));
+    tournamentService = TournamentService.getInstance();
+  }
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -27,7 +40,9 @@ public class LoginController extends HttpServlet{
     Cookie cookie = new Cookie("name", userName);
     response.addCookie(cookie);
 
-    request.getRequestDispatcher("/menu.html").forward(request, response);
+    List<Tournament> tournaments = tournamentService.getTournamentAccessDetails(userName);
+    request.setAttribute("tournamentlist", tournaments);
+    request.getRequestDispatcher("/menu.jsp").forward(request, response);
   }
 
 
