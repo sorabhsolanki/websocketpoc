@@ -43,7 +43,7 @@
 </head>
 <body>
 <form id="myform" method="post">
-    <input type="button" id="generalchat" value="GeneralChat"/>
+    <input type="button" id="generalchat" value="RealTimeChat"/>
     <input type="button" id="maketournament" value="CreateTournament"/>
     <input type="hidden" id="actionperformed" name="actionperformed"/>
 
@@ -70,6 +70,9 @@
         </c:forEach>
     </table>
 </form>
-<br>
+<br/>
+<form action="logout" method="post">
+    <input type="submit" value="logout"/>
+</form>
 </body>
 </html>
