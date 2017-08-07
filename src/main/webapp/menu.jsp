@@ -46,7 +46,7 @@
     <input type="button" id="generalchat" value="RealTimeChat"/>
     <input type="button" id="maketournament" value="CreateTournament"/>
     <input type="hidden" id="actionperformed" name="actionperformed"/>
-
+</form>
     <br/>
     Below are the tournament to which you have access.
     <br/>
@@ -59,17 +59,16 @@
         </tr>
 
         <c:forEach items="${tournamentlist}" var="tour">
-            <form>
+            <form action="tourchat" method="post">
             <tr>
-                <td><c:out value="${tour.name}"/></td>
-                <td><c:out value="${tour.adminName}"/></td>
-                <td><c:out value="${tour.createdAt}"/></td>
+                <td><input type="text" value="<c:out value="${tour.name}"/>" name="tourName" readonly style="border: 0;"/></td>
+                <td><input type="text" value="<c:out value="${tour.adminName}"/>" name="adminName" readonly style="border: 0;"/></td>
+                <td><input type="text" value="<c:out value="${tour.createdAt}"/>" name="createdAt" readonly style="border: 0;"/></td>
                 <td><input type="submit" value="Chat"/></td>
             </tr>
             </form>
         </c:forEach>
     </table>
-</form>
 <br/>
 <form action="logout" method="post">
     <input type="submit" value="logout"/>

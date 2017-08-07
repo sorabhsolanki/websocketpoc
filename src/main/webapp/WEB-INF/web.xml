@@ -54,6 +54,17 @@
 		<url-pattern>/logout/*</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>chatServlet</servlet-name>
+		<servlet-class>server.controller.TournamentChatController</servlet-class>
+	</servlet>
+
+
+	<servlet-mapping>
+		<servlet-name>chatServlet</servlet-name>
+		<url-pattern>/tourchat/*</url-pattern>
+	</servlet-mapping>
+
 
 
 </web-app>
