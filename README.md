@@ -1,2 +1,2 @@
 # websocketpoc
-Chat application which makes use of websocket
+Chat bot application which makes use of websocket
